@@ -144,7 +144,7 @@ or compound.
 
 # Acknowledgements
 
-The  author  acknowledges  funding  by  the  Deutsche Forschungsgemeinschaft (DFG) through project  C1 
+The  authors  acknowledge  funding  by  the  Deutsche Forschungsgemeinschaft (DFG) through project  C1 
 of the collaborative research center SFB/TR 103 (DFG project number 190389738).
 
 # References
