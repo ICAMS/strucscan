@@ -1,0 +1,11 @@
+name: py3
+channels:
+  - conda-forge
+dependencies:
+  - python
+  - ase
+  - numpy
+  - phonopy
+  - scipy
+  - spglib
+  - pandas

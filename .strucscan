@@ -1,0 +1,7 @@
+PROJECT_PATH: "data"    # corresponds to the top node of your data tree
+STRUCTURES_PATH: "structures"
+RESOURCE_PATH: "resources"
+
+DEBUG: FALSE                # Default: FALSE
+STRUCT_FILE_FORMAT: cfg     # Default: cfg
+SLEEP_TIME: 45              # Default: 45
