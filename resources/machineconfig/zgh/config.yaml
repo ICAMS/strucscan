@@ -1,0 +1,40 @@
+## config.yaml
+# In this file, you may want to specify all information that are necessary for the scheduler
+# to perform a parallel or serial run of the specific engine.
+# Particular, these information include, e.g. the modules to be load
+# and the binary call that is finally made.
+# Please enter the binary call on the last line only.
+# To make use of the pipelining efficiently, please enter also the name of a queue
+# that should be used as a fallback for small calculations.
+# Otherwise, strucscan will submit small, conditinal calculations
+# to the queue given in the input.yaml.
+#
+# There are several key words available that strucscan will replace
+# to create and adapt machine scripts dynamically:
+# $NNODES: number of nodes
+# $NCORES: number of cores per node
+# $NTOTALCOES: number of total cores = $NNODES * $NCORES
+#
+#
+## Example for VASP including module loading and mpirun:
+#
+#VASP:
+#  parallel: | # this pipe is essential for reading multi-line entries
+#    module load vasp/mpi/5.4.4
+#    mpirun -np $NTOTALCORES vasp_std
+#  serial: | # this pipe is essential for reading multi-line entries
+#    module load vasp/serial/5.4.4
+#    vasp_std
+#
+
+
+VASP:
+  parallel: |
+    module load vasp/mpi/5.4.4
+    mpirun -np $NTOTALCORES vasp_std
+  serial: |
+    module load vasp/serial/5.4.4
+    vasp_std
+
+scheduler: slurm
+smallest queue: shorttime1

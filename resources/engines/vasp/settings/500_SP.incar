@@ -1,0 +1,12 @@
+! ISIF and IBRION flags will be set automatically by strucscan
+ALGO            = Fast
+PREC            = Accurate
+EDIFF           = 1e-05
+NSW             = 100
+NELM            = 60
+LREAL           = .FALSE.
+LWAVE           = .FALSE.
+ISPIN           = 2
+LCHARG          = .FALSE.
+LORBIT          = 11
+ENCUT           = 500

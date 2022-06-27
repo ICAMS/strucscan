@@ -1,0 +1,7 @@
+numpy
+ase
+ipywidgets==7.5
+sphinx_rtd_theme
+m2r2
+furo
+nbsphinx

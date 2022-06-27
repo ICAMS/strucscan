@@ -1,0 +1,6 @@
+Methods
+-------
+
+.. toctree::
+
+    methods/

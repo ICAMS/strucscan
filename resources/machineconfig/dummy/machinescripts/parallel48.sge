@@ -1,0 +1,17 @@
+#!/bin/bash
+#$ -S /bin/bash
+#$ -N [JOB_NAME]
+#$ -l qname=parallel48.q
+#$ -pe mpi48 [NTOTALCORES]
+#$ -e $JOB_ID.err
+#$ -o $JOB_ID.o
+#$ -cwd
+#$ -j y
+#$ -R y
+
+ipcrm --all
+
+#START=`date`
+#HOST=`hostname`
+#QNAME="parallel48"
+#echo "start: $START  $HOSTNAME  $QNAME" > start.dat

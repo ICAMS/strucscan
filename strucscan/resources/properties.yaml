@@ -1,0 +1,13 @@
+# Each property that requires any kind of pre-processing, e.g.
+# generation of multiple input structure files
+# are 'advanced' properties and should be listed here.
+# The instruction after the colon indicate which property is prerequisite.
+# For the properties before the colon, no relaxation will be performed.
+# If the property is 'advanced' but requires no prerequisite,
+# no conditional property needs to be entered after the colon (= None).
+
+eos: static, atomic, total
+dos: total
+
+
+default_option: atomic
