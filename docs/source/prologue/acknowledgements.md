@@ -2,17 +2,16 @@
 
 ## Developers
 
--   [Isabel
-    Pietka](https://bit.ly/2XhuaGQ)  
+-   [Isabel Pietka](https://bit.ly/2XhuaGQ)  
     isabel.pietka@rub.de
-
-## Contributors
 
 -   Ralf Drautz
     ralf.drautz@rub.de
     
 -   Thomas Hammerschmidt
     thomas.hammerschmidt@rub.de
+
+## Contributors
 
 
 ## Acknowledgements
