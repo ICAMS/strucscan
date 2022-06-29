@@ -13,10 +13,10 @@ authors:
   - name: Thomas Hammerschmidt
     affiliation: 1 
 affiliations:
- - name: Ruhr University Bochum, Interdisciplinary Centre for Advanced Materials Simulation (ICAMS)
+ - name: Interdisciplinary Centre for Advanced Materials Simulation (ICAMS), Ruhr University Bochum, Bochum, Germany
    index: 1
 
-date: April 2022
+date: June 2022
 bibliography: paper.bib
 ---
 
