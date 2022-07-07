@@ -49,7 +49,6 @@ Documentation
     downloadandinstall
     methodsandexamples
     modules
-    pubsandprojects
     prologue/extending
     prologue/helpandsupport
     prologue/citing
