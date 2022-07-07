@@ -3,7 +3,7 @@
 ## Trying strucscan
 
 You can try some examples provided with strucscan using [Binder](https://mybinder.org/) 
-without installing the package. Please use [this link] to try the package. (TODO)
+without installing the package. Please use [this link] to try the package.
 
 ## Installation
 
@@ -11,7 +11,7 @@ without installing the package. Please use [this link] to try the package. (TODO
 
 strucscan can be installed on Linux based systems only.
 
-### Installation using [conda](https://anaconda.org) (TODO)
+### Installation using [conda](https://anaconda.org)
 
 strucscan can be installed directly using Conda from the conda-forge channel by the following statement
 ```
@@ -20,12 +20,12 @@ conda install -c conda-forge strucscan
 
 This is the recommended way to install if you have an Anaconda distribution.
 
-### Installation using pip (TODO)
+### Installation using pip
 
 strucscan is not available on pip directly. However, strucscan can be installed using pip by
 ```
 pip install pybind11
-pip install git+https://github.com/pyscal/pyscal
+pip install git+https://github.com/ICAMS/strucscan
 ```
 
 ### Installation from the repository
@@ -51,7 +51,7 @@ conda activate myenv
 Now the strucscan repository can be cloned and the module can be installed. 
 Python dependencies are installed automatically.
 ```
-(myenv) git clone <link>
+(myenv) git clone https://github.com/ICAMS/strucscan.git
 (myenv) cd strucscan
 (myenv) pip install .
 ```
@@ -61,9 +61,4 @@ Python dependencies are installed automatically.
 
 -   [numpy](https://numpy.org/)
 -   [ase](https://wiki.fysik.dtu.dk/ase/)
-
-### Tests (TODO)
-
-In order to see if the installation worked, the following commands can
-be tried
 
