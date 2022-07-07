@@ -34,7 +34,7 @@ shutil.copytree("../../examples", "examples")
 # -- Project information -----------------------------------------------------
 
 project = u'strucscan'
-copyright = u'2021, Isabel Pietka'
+copyright = u'2022, Isabel Pietka'
 author = u'Isabel Pietka'
 
 # The short X.Y version
