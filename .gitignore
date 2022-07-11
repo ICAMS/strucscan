@@ -1,4 +1,5 @@
 build/
 dist/
+paper/
 *.egg*
 __pycache__/
