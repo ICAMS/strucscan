@@ -38,9 +38,9 @@ copyright = u'2022, Isabel Pietka'
 author = u'Isabel Pietka'
 
 # The short X.Y version
-version = u'0.0.01'
+version = u'1.0.0'
 # The full version, including alpha/beta/rc tags
-release = u'0.0.01'
+release = u'1.0.0'
 
 
 # -- General configuration ---------------------------------------------------
