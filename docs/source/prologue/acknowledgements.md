@@ -4,6 +4,10 @@
 
 -   Isabel Pietka 
     isabel.pietka@rub.de
+-   Ralf Drautz
+    ralf.drautz@rub.de
+-   Thomas Hammerschmidt
+    thomas.hammerschmidt@rub.de
 
 
 ## Acknowledgements
