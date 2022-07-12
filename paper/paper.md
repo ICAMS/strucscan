@@ -74,7 +74,7 @@ Strucscan is a lightweight driver with focus on atomistic simulations and offers
 # Strucscan
 
 The strucscan framework is based on Python 3.6+ and requires the Atomic Simulation Environment [@ase] and NumPy. 
-It is available from a git repository and can be installed with pip or directly with conda.
+It is available from a git repository and can be installed from this or with pip.
 Detailed documentation and usage examples of strucscan are available on readthedocs. 
 High-throughput calculations with strucscan can be started from the command line, from a Python shell or from 
 a Juypter notebook as shown in the examples in the strucscan git repository.
