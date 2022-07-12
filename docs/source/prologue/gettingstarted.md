@@ -3,7 +3,7 @@
 ## Trying strucscan
 
 You can try some examples provided with strucscan using [Binder](https://mybinder.org/) 
-without installing the package. Please use [this link] to try the package.
+without installing the package. Please use [this link](https://mybinder.org/v2/gh/ICAMS/strucscan/main) to try the package.
 
 ## Installation
 
@@ -11,14 +11,6 @@ without installing the package. Please use [this link] to try the package.
 
 strucscan can be installed on Linux based systems only.
 
-### Installation using [conda](https://anaconda.org)
-
-strucscan can be installed directly using Conda from the conda-forge channel by the following statement
-```
-conda install -c conda-forge strucscan
-```
-
-This is the recommended way to install if you have an Anaconda distribution.
 
 ### Installation using pip
 
