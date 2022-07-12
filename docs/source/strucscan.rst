@@ -11,23 +11,10 @@ and :class:`strucscan.core.collector`
 to initialize a list of :class:`strucscan.core.jobobject`s
 which is updated and monitored.
 
-.. autoclass:: strucscan.core.jobmanager.JobManager
+.. automodule:: strucscan.core
    :members:
-
-.. autoclass:: strucscan.core.jobmaker.JobMaker
-   :members:
-
-.. autoclass:: strucscan.core.jobobject.JobObject
-   :members:
-
-.. automodule:: strucscan.core.datatree
-   :members:
-
-.. automodule:: strucscan.core.statusmanager
-   :members:
-
-.. automodule:: strucscan.core.collector
-   :members:
+   :undoc-members:
+   :show-inheritance:
 
 
 This module contains classes that build the interface to the certain material simulation codes.
@@ -36,14 +23,10 @@ Each interface class inherit the abstract class :class:`strucscan.engine.general
 strucscan.engine module
 ---------------------------------
 
-.. autoclass:: strucscan.engine.generalengine.GeneralEngine
+.. automodule:: strucscan.engine.generalengine.GeneralEngine
    :members:
-
-.. autoclass:: strucscan.engine.dummy.DummyEngine
-   :members:
-
-.. autoclass:: strucscan.engine.vasp.Vasp
-   :members:
+   :undoc-members:
+   :show-inheritance:
 
 
 strucscan.properties module
@@ -64,9 +47,8 @@ related to the material code that generated the job files.
 
 .. automodule:: strucscan.error.errormanager
    :members:
-
-.. autoclass:: strucscan.error.errorhandler.VaspErrorManager
-   :members:
+   :undoc-members:
+   :show-inheritance:
 
 
 strucscan.scheduler module
@@ -76,11 +58,7 @@ This module contains classes that build the interface to queueing systems (and m
 Each interface class inherit the abstract class :class:`strucscan.scheduler.GeneralScheduler`.
 
 
-.. autoclass:: strucscan.scheduler.GeneralScheduler
+.. automodule:: strucscan.scheduler.GeneralScheduler
    :members:
-
-.. autoclass:: strucscan.scheduler.SunGridEngine
-   :members:
-
-.. autoclass:: strucscan.scheduler.Slurm
-   :members:
+   :undoc-members:
+   :show-inheritance:
