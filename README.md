@@ -10,6 +10,10 @@ the results in Python dictionaries for further evaluation. strucscan comes with 
 VASP software package for ab-initio calculations. The VASP software itself is not included in this
 distribution.
 
+# Documentation
+
+A detailed documentation can be found [here](https://strucscan.readthedocs.io/).
+
 # Installation and setup
 
 1. clone repository into a `<directory>` of your choice. Please clone 'master' branch only.
