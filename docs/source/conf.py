@@ -14,7 +14,7 @@
 #
 import os
 import sys
-#import sphinx_rtd_theme
+import sphinx_rtd_theme
 import shutil
 
 sys.path.insert(0, os.path.abspath('../..'))
@@ -63,16 +63,6 @@ extensions = [
     'm2r2',
     'nbsphinx',
 ]
-
-html_theme = 'furo'
-#html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
-
-
-html_static_path = ["../_static"]
-html_theme_options = {
-    "light_logo": "strucscan_logo1.png",
-    "dark_logo": "strucscan_logo2.png",
-}
 
 
 source_suffix = ['.rst', '.md']
@@ -168,6 +158,19 @@ pygments_style = None
 
 
 # -- Options for HTMLHelp output ---------------------------------------------
+
+html_static_path = ["../_static"]
+html_theme_options = {
+    "light_logo": "strucscan_logo1.png",
+    "dark_logo": "strucscan_logo2.png",
+}
+
+import os
+on_rtd = os.environ.get('READTHEDOCS') == 'True'
+if on_rtd:
+    html_theme = 'default'
+else:
+    html_theme = 'furo'
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'strucscandoc'
