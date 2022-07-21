@@ -36,7 +36,7 @@ setup(
 
     keywords='computational materials science',
     packages=find_packages(include=['strucscan', 'strucscan.*']),
-    install_requires=['ase', 'numpy', 'scipy', 'spglib'],
+    install_requires=['ase', 'numpy', 'scipy', 'pyyaml'],
     cmdclass=versioneer.get_cmdclass(),
     include_package_data=True,
     package_data={'': extra_files},
