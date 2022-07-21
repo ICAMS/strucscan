@@ -5,7 +5,4 @@ dependencies:
   - python
   - ase
   - numpy
-  - phonopy
-  - scipy
-  - spglib
-  - pandas
+  - pyyaml
