@@ -25,7 +25,7 @@ setup(
 
     classifiers=['Development Status :: 5 - Production/Stable',
                  'Topic :: Scientific/Engineering :: Physics',
-                 'License :: OSI Approved :: GNU GPL v3',
+                 ''License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
                  'Intended Audience :: Science/Research',
                  'Operating System :: OS Independent',
                  'Programming Language :: Python :: 3',
@@ -36,7 +36,7 @@ setup(
 
     keywords='computational materials science',
     packages=find_packages(include=['strucscan', 'strucscan.*']),
-    install_requires=['ase', 'numpy', 'scipy', 'spglib'],
+    install_requires=['ase', 'numpy', 'pyyaml'],
     cmdclass=versioneer.get_cmdclass(),
     include_package_data=True,
     package_data={'': extra_files},
