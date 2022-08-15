@@ -5,4 +5,3 @@ dependencies:
   - python
   - ase
   - numpy
-  - pyyaml
