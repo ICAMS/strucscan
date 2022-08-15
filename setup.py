@@ -25,7 +25,7 @@ setup(
 
     classifiers=['Development Status :: 5 - Production/Stable',
                  'Topic :: Scientific/Engineering :: Physics',
-                 ''License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+                 'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
                  'Intended Audience :: Science/Research',
                  'Operating System :: OS Independent',
                  'Programming Language :: Python :: 3',
