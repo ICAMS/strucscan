@@ -7,12 +7,29 @@ import yaml
 def main():
     cmdarg = sys.argv[:]
     if len(cmdarg) == 1:
-        print("Please specify an input file: strucscan <input.yml>")
+        print("Please specify an input file: strucscan [input.yaml]")
+        print("For help, type strucscan --help")
         sys.exit(0)
     else:
-        inputfile = cmdarg[1]
-        input_dict = read_input(inputfile)
-        JobManager(input_dict)
+        arg = cmdarg[1]
+        if arg == "--help":
+            print("strucscan: A Lightweight Python-based framework for high-throughput material simulation")
+            print("by ICAMS, Ruhr University Bochum")
+            print("")
+            print("Usage:")
+            print("strucscan [input.yaml]")
+            print("")
+            print("Please specify the path to your input file.")
+            print("Input file needs to be in yaml format.")
+            print("For examples, see https://github.com/ICAMS/strucscan/tree/main/examples")
+            print("A template input file can be seen in examples/dummy.yaml")
+            print("")
+            print("If you have an idea for a new feature, a question or found a bug,")
+            print("you can submit it through the issue page of the repository:")
+            print("https://github.com/ICAMS/strucscan/issues")
+        else:
+            input_dict = read_input(arg)
+            JobManager(input_dict)
 
 
 def read_input(inputfile):
