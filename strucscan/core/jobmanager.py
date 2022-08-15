@@ -23,7 +23,7 @@ class JobManager:
         1. the JobManager checks the user given input (this happens in __init__)
         2. the JobManager calls the JobMaker to initialize the a list of all jobs, the 'job_list'
         3. every 45 sec (set in ~/.strucscan), the JobManager asks the JobMaker for a status update of all jobs in 'job_list'
-        4. depending on the status, the JobMaker reacts
+        4. depending on the status, the JobMaker initiate the data collection or calls the ErrorManager
         5. if alls jobs are finished, the JobManager ends the process
 
         :param input_dict: (dict) input dictionary. Please follow to the examples in strucscan.resources.inputyaml
@@ -86,6 +86,7 @@ class JobManager:
             self.input_dict["submit"] = True
             self.jobmaker.input_dict["submit"] = True
 
+            
         if (self.input_dict["properties"] is None) or (self.input_dict["prototypes"] is None):
             # if no properties or prototypes have been provided, strucscan will only collect from datatree
             self.assembled_properties = []
@@ -95,30 +96,27 @@ class JobManager:
             self.properties = self.input_dict["properties"].split()
             self.assembled_properties = []
 
-            # check for known and unkown ready-assembled properties
-            unkown = []
-            delete = []
+            # filter unkown and correct assembled properties
+            unkown_indeces = []
             for ind, property in enumerate(self.properties):
                 if "_" in property:
                     if property not in ALL_PROPERTIES:
-                        unkown.append(property)
+                        unkown_indeces.append(property)
                     else:
                         self.assembled_properties.append(property)
-                    delete.append(ind)
+                    unkown_indeces.append(ind)
+            tmp_properties = [prop for ind, prop in enumerate(self.properties) if ind not in unkown_indeces]
+            self.properties = tmp_properties
 
-            # remove unkown and ready-assembled properties
-            tmp_properties = [prop for ind, prop in enumerate(self.properties) if ind not in delete]
-            properties = tmp_properties
-
-            first_property = properties[0]
+            # add default option if neccessary
+            first_property = self.properties[0]
             if first_property in ADVANCED_TASKS:
                 property = first_property + "_" + DEFAULT_OPTION
                 self.assembled_properties.append(property)
             else:
                 self.assembled_properties.append(first_property)
-
             if len(properties) > 1:
-                for next_property in properties[1:]:
+                for next_property in self.properties[1:]:
                     if first_property in ADVANCED_TASKS:
                         first_property = DEFAULT_OPTION
                     if next_property in ADVANCED_TASKS:
@@ -129,13 +127,14 @@ class JobManager:
                     self.assembled_properties.append(next_property)
 
             # remove any wrong assembled property
-            delete = []
+            delete_indeces = []
             for ind, property in enumerate(self.assembled_properties):
                 if property not in ALL_PROPERTIES:
-                    delete.append(ind)
-            tmp_properties = [prop for ind, prop in enumerate(self.assembled_properties) if ind not in delete]
-            self.assembled_properties = tmp_properties
+                    delete_indeces.append(ind)
+            tmp_properties = [prop for ind, prop in enumerate(self.assembled_properties) if ind not in delete_indeces]
+            self.assembled_properties = list(set(tmp_properties))
         self.input_dict["properties"] = " ".join([prop for prop in self.assembled_properties])
+        
 
         # collect all structure paths
         self.structpaths = []
@@ -170,7 +169,6 @@ class JobManager:
             print("")
 
         self.initialize_job_list()
-#        self.update_job_list()
 
         if self.VERBOSE:
             print("")
@@ -239,7 +237,7 @@ class JobManager:
                             print("{:>3}: {:60} {:8} {:8} {:20} {:20}".format("#", "jobpath", "id", "status", "start", "end"))
                             print("-"*114)
                             for job, line in self.cl_out_lines.items():
-                                print(line + "\n")
+                                print(line)
                 if self.input_dict["collect"]:
                     self.collect()
                 time.sleep(SLEEP_TIME())
@@ -281,11 +279,11 @@ class JobManager:
         for i, jobobject in enumerate(self.job_list):
             if DEBUG():
                 print("")
-                print("jobmanager update, i:", i)
-                print("jobobject jobpath:", jobobject.jobpath)
-                print("jobobject structpath:", jobobject.structpath)
-                print("jobobject basis_ref_atoms:", jobobject.basis_ref_atoms)
-                print("jobobject conditonal files:", jobobject.conditional_files)
+                print("Update jobobject #", i)
+                print("jobpath:", jobobject.jobpath)
+                print("structpath:", jobobject.structpath)
+                print("basis_ref_atoms:", jobobject.basis_ref_atoms)
+                print("conditonal files in:", jobobject.conditional_files)
             jobobject = self.jobmaker.update(jobobject)
             self.job_list[i] = jobobject
         return
@@ -302,7 +300,7 @@ class JobManager:
                 self.cl_out[jobpath]["start"] = datetime.now().strftime("%m/%d/%Y %H:%M")
             if (status_index == 1) and (self.cl_out[jobpath]["end"] == ""):
                 self.cl_out[jobpath]["end"] = datetime.now().strftime("%m/%d/%Y %H:%M")
-            line = "{:>3d} {:60} {:8} {:8} {:20} {:20}".format(ind, jobpath, str(job_id), status, self.cl_out[jobpath]["start"], self.cl_out[jobpath]["end"])
+            line = "{:>3d} {:60} {:8} {:8} {:20} {:20}\n".format(ind, jobpath, str(job_id), status, self.cl_out[jobpath]["start"], self.cl_out[jobpath]["end"])
             if line == self.cl_out_lines[jobpath]:
                 pass
             else:
@@ -343,7 +341,7 @@ class JobManager:
                             for composition in [dir for dir in os.listdir(self.DATA_TREE_PATH + "/" + calculator)]:
                                 if os.path.isdir(self.DATA_TREE_PATH + "/" + calculator + "/" + composition):
 
-                                    fname = "{DATA_TREE_PATH}/{calculator}/{calculator}{SEPERATOR}{composition}{SEPERATOR}output_dict.yaml". \
+                                    fname = "{DATA_TREE_PATH}/{calculator}/{calculator}{SEPERATOR}{composition}{SEPERATOR}output_dict.json". \
                                         format(DATA_TREE_PATH=self.DATA_TREE_PATH,
                                                calculator=calculator,
                                                SEPERATOR=SEPERATOR,
