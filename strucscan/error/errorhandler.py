@@ -50,13 +50,12 @@ class VaspErrorManager(GeneralErrorManager):
         else:
             files = os.listdir(jobpath)
             if "vasp.out" not in files:
-#                # error in submission script
+                # error in submission script
                 self.status__job_id = (1, "error", self.job_id)
             elif ("vasp.out" in files) and ("OUTCAR" not in files):
                 # vasp_std started but canceled immediately
                 self.status__job_id = (1, "error", self.job_id)
             elif ("vasp.out" in files) and ("OUTCAR" and files):
-                print("VaspErrorManager: Job outtimed, copying CONTCAR to POSCAR")
                 # vasp_std started, scheduler had no time to gzip OUTCAR, job timed out
                 os.chdir(jobpath)
                 try:
