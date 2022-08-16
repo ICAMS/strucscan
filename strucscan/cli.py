@@ -13,16 +13,15 @@ def main():
     else:
         arg = cmdarg[1]
         if arg == "--help":
-            print("strucscan: A Lightweight Python-based framework for high-throughput material simulation")
+            print("strucscan: Lightweight Python-based framework for high-throughput material simulation")
             print("by ICAMS, Ruhr University Bochum")
+            print("https://github.com/ICAMS/strucscan")
             print("")
             print("Usage:")
             print("strucscan [input.yaml]")
             print("")
-            print("Please specify the path to your input file.")
-            print("Input file needs to be in yaml format.")
+            print("input.yaml is input file for strucscan in yaml format.")
             print("For examples, see https://github.com/ICAMS/strucscan/tree/main/examples")
-            print("A template input file can be seen in examples/dummy.yaml")
             print("")
             print("If you have an idea for a new feature, a question or found a bug,")
             print("you can submit it through the issue page of the repository:")
