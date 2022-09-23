@@ -5,6 +5,8 @@ import collections
 import re
 import os
 
+from pathlib import Path
+
 from ase import Atoms
 from ase import io
 
@@ -41,7 +43,7 @@ def read_configuration():
     HOME_DIR = os.path.expanduser("~")
 
     # define default
-    config = {"PROJECT_PATH": "tests/data",
+    config = {"PROJECT_PATH": str(Path.home()) + "/data",
               "RESOURCE_PATH": "resources",
               "STRUCTURES_PATH": "structures"}
 
@@ -54,7 +56,10 @@ def read_configuration():
 
 
 def PROJECT_PATH():
-    return read_configuration()["PROJECT_PATH"]
+    project_path = read_configuration()["PROJECT_PATH"]
+    if project_path == "data":
+        project_path = str(Path.home()) + "/data"
+    return project_path
 
 
 def RESOURCE_PATH():
