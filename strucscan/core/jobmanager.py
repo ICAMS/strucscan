@@ -115,7 +115,7 @@ class JobManager:
                 self.assembled_properties.append(property)
             else:
                 self.assembled_properties.append(first_property)
-            if len(properties) > 1:
+            if len(self.properties) > 1:
                 for next_property in self.properties[1:]:
                     if first_property in ADVANCED_TASKS:
                         first_property = DEFAULT_OPTION
