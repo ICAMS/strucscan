@@ -54,7 +54,11 @@ def read_configuration():
 
 
 def PROJECT_PATH():
-    return read_configuration()["PROJECT_PATH"]
+    project_path = read_configuration()["PROJECT_PATH"]
+    if project_path == "data":
+        from pathlib import Path
+        project_path = str(Path.home()) + "/data"
+    return project_path
 
 
 def RESOURCE_PATH():
