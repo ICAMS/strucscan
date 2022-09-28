@@ -29,7 +29,7 @@ def determine_status__job_id(calc, jobpath, job_list):
     status_index, status, job_id = (0, NOT_EXISTING, None)
     if os.path.exists(jobpath):
         os.chdir(jobpath)
-        files = os.listdir(jobpath)
+        files = os.listdir(os.getcwd())
         if "end.dat" in files:
             if calc.check_if_finished(files):
                 status_index, status, job_id = (1, FINISHED, None)
