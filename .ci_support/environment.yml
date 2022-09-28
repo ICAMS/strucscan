@@ -1,0 +1,8 @@
+name: py3
+channels:
+  - conda-forge
+dependencies:
+  - python
+  - ase
+  - numpy
+  - pyyaml
