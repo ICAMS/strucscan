@@ -1,5 +1,4 @@
 from datetime import datetime
-from random import shuffle
 import json
 import copy
 import time
@@ -80,61 +79,47 @@ class JobManager:
         self.job_list = []
         self.calc = get_calc(self.engine_name, self.input_dict)
         self.calc.set_scheduler()
-        self.jobmaker = JobMaker(self.job_list, self.calc, self.input_dict)
 
-        if self.input_dict["monitor"]:
-            self.input_dict["submit"] = True
-            self.jobmaker.input_dict["submit"] = True
-
-            
+        self.assembled_properties = []
         if (self.input_dict["properties"] is None) or (self.input_dict["prototypes"] is None):
             # if no properties or prototypes have been provided, strucscan will only collect from datatree
-            self.assembled_properties = []
             self.prototypes = []
         else:
             self.prototypes = self.input_dict["prototypes"].split()
             self.properties = self.input_dict["properties"].split()
-            self.assembled_properties = []
 
-            # filter unkown and correct assembled properties
-            unkown_indeces = []
-            for ind, property in enumerate(self.properties):
-                if "_" in property:
-                    if property not in ALL_PROPERTIES:
-                        unkown_indeces.append(property)
-                    else:
-                        self.assembled_properties.append(property)
-                    unkown_indeces.append(ind)
-            tmp_properties = [prop for ind, prop in enumerate(self.properties) if ind not in unkown_indeces]
-            self.properties = tmp_properties
-
-            # add default option if neccessary
             first_property = self.properties[0]
-            if first_property in ADVANCED_TASKS:
-                property = first_property + "_" + DEFAULT_OPTION
-                self.assembled_properties.append(property)
+            if first_property in ADVANCED_PROPERTIES:
+                # if first property requires any prerequisits,
+                # add DEFAULT_OPTION to self.assembled_properties
+                self.assembled_properties.append(DEFAULT_OPTION)
+                self.assembled_properties.append(self.assemble_property(self.properties[0], DEFAULT_OPTION))
             else:
+                # else store property in self.assembled_properties
                 self.assembled_properties.append(first_property)
-            if len(properties) > 1:
+            # if more than one property entered, link properties
+            if len(self.properties) > 1:
                 for next_property in self.properties[1:]:
-                    if first_property in ADVANCED_TASKS:
-                        first_property = DEFAULT_OPTION
                     if next_property in ADVANCED_TASKS:
-                        if first_property not in OPTIMIZATIONS:
-                            first_property = DEFAULT_OPTION
-                        next_property = "{}_{}".format(next_property, first_property)
-                    first_property = next_property
-                    self.assembled_properties.append(next_property)
-
+                        if first_property in OPTIMIZATIONS:
+                            self.assembled_properties.append(self.assemble_property(next_property, first_property))
+                        else:
+                            self.assembled_properties.append(self.assemble_property(next_property, DEFAULT_OPTION))
+                    else:
+                        self.assembled_properties.append(next_property)
             # remove any wrong assembled property
             delete_indeces = []
             for ind, property in enumerate(self.assembled_properties):
                 if property not in ALL_PROPERTIES:
                     delete_indeces.append(ind)
             tmp_properties = [prop for ind, prop in enumerate(self.assembled_properties) if ind not in delete_indeces]
-            self.assembled_properties = list(set(tmp_properties))
+            # remove duplicates
+            self.assembled_properties = list(dict.fromkeys(tmp_properties))
+
         self.input_dict["properties"] = " ".join([prop for prop in self.assembled_properties])
-        
+        if self.input_dict["monitor"]:
+            self.input_dict["submit"] = True
+        self.jobmaker = JobMaker(self.job_list, self.calc, self.input_dict)
 
         # collect all structure paths
         self.structpaths = []
@@ -197,16 +182,14 @@ class JobManager:
                                  status=jobobject.get_status()
                                  )
                           )
-                print("")
             else:
                 if self.command_line_output():
                     print(
-                        "{:>3}: {:60} {:8} {:8} {:20} {:20}".format("#", "jobpath", "id", "status", "start",
-                                                                     "end"))
+                        "{:>3}: {:60} {:8} {:8} {:20} {:20}".format(
+                            "#", "jobpath", "id", "status", "start", "end"))
                     print("-" * 114)
                     for job, line in self.cl_out_lines.items():
                         print(line)
-                    print("")
 
         if (self.job_list != []) and self.input_dict["monitor"]:
             if self.VERBOSE:
@@ -231,13 +214,13 @@ class JobManager:
                                            status=jobobject.get_status()
                                            )
                                   )
-                        print("")
                     else:
                         if self.command_line_output():
                             print("{:>3}: {:60} {:8} {:8} {:20} {:20}".format("#", "jobpath", "id", "status", "start", "end"))
                             print("-"*114)
                             for job, line in self.cl_out_lines.items():
                                 print(line)
+                    print("")
                 if self.input_dict["collect"]:
                     self.collect()
                 time.sleep(SLEEP_TIME())
@@ -245,7 +228,6 @@ class JobManager:
             self.collect()
         if self.VERBOSE:
             print("Finished.")
-
         return
 
     def initialize_job_list(self):
@@ -258,7 +240,8 @@ class JobManager:
             print(">> Initializing:")
         if (self.structpaths != []):
             for structpath in self.structpaths:
-                for jobobject in self.jobmaker.initialize_jobs(structpath, self.assembled_properties):
+                jobobjects = self.jobmaker.initialize_jobs(structpath, self.assembled_properties)
+                for jobobject in jobobjects:
                     if self.VERBOSE:
                         print("Initialized ", jobobject.species, jobobject.property)
                     self.job_list.append(jobobject)
@@ -267,7 +250,6 @@ class JobManager:
         unique_jobobject = [jobobject for jobobject in self.job_list
                if jobobject.get_jobpath() not in dubplicates and not dubplicates.add(jobobject.get_jobpath())]
         self.job_list = unique_jobobject
-        shuffle(self.job_list)
         return
 
     def update_job_list(self):
@@ -300,7 +282,7 @@ class JobManager:
                 self.cl_out[jobpath]["start"] = datetime.now().strftime("%m/%d/%Y %H:%M")
             if (status_index == 1) and (self.cl_out[jobpath]["end"] == ""):
                 self.cl_out[jobpath]["end"] = datetime.now().strftime("%m/%d/%Y %H:%M")
-            line = "{:>3d} {:60} {:8} {:8} {:20} {:20}\n".format(ind, jobpath, str(job_id), status, self.cl_out[jobpath]["start"], self.cl_out[jobpath]["end"])
+            line = "{:>3d} {:60} {:8} {:8} {:20} {:20}".format(ind, jobpath, str(job_id), status, self.cl_out[jobpath]["start"], self.cl_out[jobpath]["end"])
             if line == self.cl_out_lines[jobpath]:
                 pass
             else:
@@ -378,6 +360,7 @@ class JobManager:
                                     json_dumps = encode(output_dict)
                                     with open(fname, "w") as f:
                                         f.write(json_dumps)
-        if self.VERBOSE:
-            print("")
         return
+
+    def assemble_property(self, name, option):
+        return name + "_" + option
