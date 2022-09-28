@@ -57,7 +57,7 @@ class JobMaker:
 
         if len(properties) > 1:
             basis_ref_structpath = first_jobobject.get_jobpath() + "/" + self.calc.final_struct_fname
-            for property in properties:
+            for property in properties[1:]:
                 jobpath = self.calc.get_absolute_jobpath(property, first_jobobject, structpath=structpath)
                 status_index, status, job_id = statusmanager.determine_status__job_id(self.calc, jobpath, self.job_list)
 
