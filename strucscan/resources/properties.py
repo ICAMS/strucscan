@@ -25,6 +25,7 @@ with open(get_resource_file_path() + "/properties.yaml", "r") as stream:
 
 try:
     DEFAULT_OPTION = properties_conifg_dict["default_option"]
+    del properties_conifg_dict["default_option"]
 except KeyError:
     DEFAULT_OPTION = "atomic"
 
