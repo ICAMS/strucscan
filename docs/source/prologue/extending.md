@@ -10,7 +10,7 @@ can be continuously improved.
 
 In case a bug is found in the module, it can be reported on the [issues
 page of the 
-repository](https://git.noc.ruhr-uni-bochum.de/pietki8q/strucscan/-/issues). 
+repository](https://github.com/ICAMS/strucscan/issues). 
 After clicking on the new issue button, there is template already provided for
 Bug report. Please choose this and make sure the necessary fields are
 filled. Once a bug is reported, the status can once again monitored on
