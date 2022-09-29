@@ -13,9 +13,6 @@ which is updated and monitored.
 
 .. automodule:: strucscan.core
    :members:
-   :undoc-members:
-   :show-inheritance:
-
 
 This module contains classes that build the interface to the certain material simulation codes.
 Each interface class inherit the abstract class :class:`strucscan.engine.generalengine.GeneralEngine`.
@@ -23,19 +20,26 @@ Each interface class inherit the abstract class :class:`strucscan.engine.general
 strucscan.engine module
 ---------------------------------
 
-.. automodule:: strucscan.engine.generalengine.GeneralEngine
+.. autoclass:: strucscan.engine.generalengine.GeneralEngine
    :members:
-   :undoc-members:
-   :show-inheritance:
 
 
 strucscan.properties module
 --------------------
 
-This module contains classes that generate (pre-process) the structure files
-for each material property. Each property class inherit the abstract class
-:class:`strucscan.properties.generalproperty.GeneralProperty`.
+This module contains classes that generate, or pre-process, the structure files
+for each material property. By default, strucscan comes with a methods for
+running bulk and equation of stat (EOS) calculations.
 
+.. automodule:: strucscan.properties.bulk
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: strucscan.properties.eos
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 strucscan.error module
 --------------------
@@ -57,8 +61,7 @@ strucscan.scheduler module
 This module contains classes that build the interface to queueing systems (and machines without any queue).
 Each interface class inherit the abstract class :class:`strucscan.scheduler.GeneralScheduler`.
 
-
-.. automodule:: strucscan.scheduler.GeneralScheduler
+.. autoclass:: strucscan.scheduler.GeneralScheduler
    :members:
    :undoc-members:
    :show-inheritance:
