@@ -22,8 +22,8 @@ files.
 
 The present version of strucscan is tailored to the calculation of frequently needed material properties with
 widely used atomistic simulation codes on common scheduling systems. The implemented interfaces particularly
-support the VASP software package `(Kresse, 1996)<https://doi.org/10.1016/0927-0256(96)00008-0>`, (Kresse, 1996)<https://doi.org/10.1103/PhysRevB.54.11169>`, `(Kresse, 1999)<https://doi.org/10.1103/PhysRevB.59.1758>` for density-functional theory (DFT)
-calculations on SunGridEngine `(Gentzsch, 2001)<https://doi.org/10.1109/CCGRID.2001.923173>` and slurm `(Yoo, 2003)<https://doi.org/10.1007/10968987_3>` scheduler systems. With the well-defined and documented
+support the VASP software package `(Kresse, 1996) <https://doi.org/10.1016/0927-0256(96)00008-0>`_, (Kresse, 1996) <https://doi.org/10.1103/PhysRevB.54.11169>`_, `(Kresse, 1999) <https://doi.org/10.1103/PhysRevB.59.1758>`_ for density-functional theory (DFT)
+calculations on SunGridEngine `(Gentzsch, 2001) <https://doi.org/10.1109/CCGRID.2001.923173>`_ and slurm `(Yoo, 2003) <https://doi.org/10.1007/10968987_3>`_ scheduler systems. With the well-defined and documented
 interfaces, strucscan can be extended with basic programming skills to further scheduling systems, to further
 simulation codes and material properties at the atomic scale and to other simulation scales.
 
