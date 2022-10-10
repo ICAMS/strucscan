@@ -221,7 +221,6 @@ class JobManager:
                             print("-"*114)
                             for job, line in self.cl_out_lines.items():
                                 print(line)
-                    print("")
                 if self.input_dict["collect"]:
                     self.collect()
                 time.sleep(SLEEP_TIME())
