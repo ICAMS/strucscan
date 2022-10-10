@@ -107,6 +107,7 @@ class JobManager:
                             self.assembled_properties.append(self.assemble_property(next_property, DEFAULT_OPTION))
                     else:
                         self.assembled_properties.append(next_property)
+                    first_property = next_property
             # remove any wrong assembled property
             delete_indeces = []
             for ind, property in enumerate(self.assembled_properties):
