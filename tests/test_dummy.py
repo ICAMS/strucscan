@@ -22,5 +22,5 @@ def test_dummy():
     assert os.path.exists(PROJECT_PATH() + "/DUMMY/Al/total__fcc__Al") == True
     assert len(os.listdir(PROJECT_PATH() + "/DUMMY/Al/total__fcc__Al")) == 8
 
-    assert os.path.exists(PROJECT_PATH() + "/DUMMY/Al/eos_static__fcc__Al") == True
-    assert len(os.listdir(PROJECT_PATH() + "/DUMMY/Al/eos_static__fcc__Al")) == 27
+    assert os.path.exists(PROJECT_PATH() + "/DUMMY/Al/eos_total__fcc__Al") == True
+    assert len(os.listdir(PROJECT_PATH() + "/DUMMY/Al/eos_total__fcc__Al")) == 27
