@@ -72,7 +72,7 @@ def STRUCTURES_PATH():
 
 def DEBUG():
     try:
-        if read_configuration()["DEBUG"].lower() == "true":
+        if read_configuration()["DEBUG"] == True:
             return True
     except:
         return False
