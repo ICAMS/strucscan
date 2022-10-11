@@ -6,6 +6,7 @@ from strucscan.resources.properties import *
 from ase import io
 from ase.calculators.singlepoint import SinglePointCalculator
 
+import numpy as np
 import subprocess
 import os
 
