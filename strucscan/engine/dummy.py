@@ -4,6 +4,7 @@ from strucscan.utils import PROJECT_PATH, STRUCT_FILE_FORMAT
 from strucscan.resources.properties import *
 
 from ase import io
+from ase.calculators.singlepoint import SinglePointCalculator
 
 import subprocess
 import os
@@ -192,6 +193,8 @@ class DummyEngine(GeneralEngine):
             fname += "/" + resultfilename
         try:
             final_struct = io.read(fname, format="cfg")
+            calc = SinglePointCalculator(atoms=final_struct, energy=0., forces=np.zeros((len(final_struct), 3)), stress=np.zeros(6))
+            final_struct.calc = calc
             return final_struct
         except Exception:
             raise FileNotFoundError("{} not found.".format(fname))
