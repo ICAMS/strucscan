@@ -19,10 +19,10 @@ class JobManager:
         - when strucscan is called, it creates the JobManager object first
         - the JobManager object creates the JobMaker and communicates with it
         - a typical workflow looks like in the following:
-        1. the JobManager checks the user given input (this happens in __init__)
+        1. the JobManager checks the user-given input (this happens in __init__)
         2. the JobManager calls the JobMaker to initialize the a list of all jobs, the 'job_list'
         3. every 45 sec (set in ~/.strucscan), the JobManager asks the JobMaker for a status update of all jobs in 'job_list'
-        4. depending on the status, the JobMaker initiate the data collection or calls the ErrorManager
+        4. depending on the status, the JobMaker initiates the data collection or calls the ErrorManager
         5. if alls jobs are finished, the JobManager ends the process
 
         :param input_dict: (dict) input dictionary. Please follow to the examples in strucscan.resources.inputyaml
