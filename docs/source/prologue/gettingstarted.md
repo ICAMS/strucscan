@@ -144,7 +144,7 @@ VASP:
     vasp_std
 ```
 
-##### Example: machineconfig/vulcan.machinescripts/parallel12.sge with scheduler settings for parallel execution
+##### Example: machineconfig/dummy/machinescripts/parallel12.sge with scheduler settings for parallel execution
 ```
 #!/bin/bash 
 #$ -S /bin/tcsh 
