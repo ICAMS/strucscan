@@ -13,7 +13,7 @@ class GeneralErrorManager:
 
         :param calc: (strucscan.engine.generalengine.GeneralEngine object) calculator object
         :param jobpath: (str) absolute path to job directory
-        :param job_id: (str) id of job in scheduler: on queuing systems, job_id equilas queue id, on systems without queue, job_id euqils process id
+        :param job_id: (str) id of job in scheduler: on queuing systems, job_id equals queue id, on systems without queue, job_id equals process id
         """
         self.calc = calc
         self.jobpath = jobpath
