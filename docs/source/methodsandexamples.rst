@@ -7,3 +7,4 @@ Examples
     examples/02_cli
     examples/03_vasp_eos
     examples/04_vasp_surface
+    examples/05_add_new_properties
