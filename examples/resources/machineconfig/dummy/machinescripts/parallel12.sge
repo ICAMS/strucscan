@@ -1,0 +1,17 @@
+#!/bin/bash
+#$ -S /bin/tcsh
+#$ -N [JOB_NAME]
+#$ -l qname=parallel12.q
+#$ -pe mpi12 [NTOTALCORES]
+#$ -e $JOB_ID.err
+#$ -o $JOB_ID.o
+#$ -cwd
+#$ -j y
+#$ -R y
+
+ipcrm --all
+
+#START=`date`
+#HOST=`hostname`
+#QNAME="parallel12"
+#echo "start: $START  $HOSTNAME  $QNAME" > start.dat
