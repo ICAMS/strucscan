@@ -107,16 +107,8 @@ def get_calc(engine_name, input_dict):
     elif "VASP" in engine_name:
         from strucscan.engine.vasp import Vasp
         calc = Vasp(input_dict)
-    elif "BOPFOX" in engine_name:
-        try:
-            from strucscan.engine.bopfox import BOPfox
-            calc = BOPfox(input_dict)
-        except ImportError:
-            raise("Could not import bopfox from ase.io. BOPfox calculations are not possible. Exiting.")
-    elif "LAMMPS" in engine_name:
-        raise("LAMMPS not implemented yet. Exiting.")
-    elif "ACE" in engine_name:
-        raise("ACE not implemented yet. Exiting.")
+    else:
+        raise("Engine not known. Exiting.")
     return calc
 
 
@@ -167,9 +159,9 @@ def parse_prototypefile(structpath):
 
 def get_element_order_from_atoms(atoms):
     """
-    - assigns letters to chemical symbols alphabteically according to their occurance
+    - assigns letters to chemical symbols alphabetically according to their occurrence
       in list of chemical symbols
-    - if for example, the list of chemical smybols looks like  ['Ni', 'Ni', 'Al', 'Cr', ...],
+    - if for example, the list of chemical symbols looks like  ['Ni', 'Ni', 'Al', 'Cr', ...],
       then get_element_order_from_atoms returns {'A': 'Ni', 'B': 'Al', 'C': 'Cr', ...}
       because 'Ni' comes first, 'Al' comes second, 'Cr' comes third, ... .
     :param atoms: (ASE atoms object)
@@ -207,7 +199,7 @@ def get_positions_dict_from_structure_file(structpath, _format):
     :return positions_dict: (dict) abstract dictionary of atomic positions,
     e.g. {'A' [pos1, pos2, ...], 'B': [pos1, pos2, ...], 'C': [...], ...}
     where 'A' is assigned to the chemical symbol
-    that comes first in the list of chemcial symbols of the atoms object.
+    that comes first in the list of chemical symbols of the atoms object.
     If the chemical symbols list is ['Ni', 'Ni', 'Al', 'Cr', ...],
     then 'Ni' is element A, 'Al' is element 'B', 'Cr' is element 'B'.
     """
@@ -225,7 +217,7 @@ def get_positions_dict_from_atoms(atoms):
     :return positions_dict: (dict) abstract dictionary of atomic positions,
     e.g. {'A' [pos1, pos2, ...], 'B': [pos1, pos2, ...], 'C': [...], ...}
     where 'A' is assigned to the chemical symbol
-    that comes first in the list of chemcial symbols of the atoms object.
+    that comes first in the list of chemical symbols of the atoms object.
     If the chemical symbols list is ['Ni', 'Ni', 'Al', 'Cr', ...],
     then 'Ni' is element A, 'Al' is element 'B', 'Cr' is element 'B'.
     """
@@ -274,7 +266,7 @@ def get_new_chemical_formula(positions_dict, species):
     :param positions_dict: (dict) abstract dictionary of atomic positions,
     e.g. {'A' [pos1, pos2, ...], 'B': [pos1, pos2, ...], 'C': [...], ...}
     where 'A' is assigned to the chemical symbol
-    that comes first in the list of chemcial symbols of the atoms object.
+    that comes first in the list of chemical symbols of the atoms object.
     If the chemical symbols list is ['Ni', 'Ni', 'Al', 'Cr', ...],
     then 'Ni' is element A, 'Al' is element 'B', 'Cr' is element 'B'.
     :param species: (str) chemical species, e.g. 'Ni Al'
@@ -364,7 +356,7 @@ def get_initial_atvolume(atoms, initial_atvolumes):
     """
     :param atoms: (ASE atoms object)
     :param initial_atvolumes: (str) initial atomic volume per specie given by user, e.g. "11.2 13.4".
-    Type "default" or "d" in order to user defailt atomic volumes.
+    Type "default" or "d" in order to user default atomic volumes.
     :return: (float) initial atomic volume determined by sum([n_i * V_i])
     where n_i is the number of atoms of specie i and V_i is the initial atomic volume for specie i
     """
@@ -400,7 +392,7 @@ def scale_by_atvolume(atoms, initial_atvolumes, structpath=""):
     :param atoms: (ASE atoms object)
     :param structpath: (str) absolute path of structure file
     :param initial_atvolumes: (str) initial atomic volume per specie given by user, e.g. "11.2 13.4".
-    Type "default" or "d" in order to user defailt atomic volumes.
+    Type "default" or "d" in order to user default atomic volumes.
     :return: (ASE atoms object) position scaled atoms object
     """
     cell = atoms.get_cell()
