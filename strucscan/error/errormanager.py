@@ -19,7 +19,7 @@ def determine_status__job_id(calc, jobpath, job_list):
     :param jobpath: (str) absolute path to job directory
     :param job_list: (list) list of all JobObjects
     :return: (int, str, str) tuple of job status index (int), status (str) and job id (str).
-    On queuing systems, job_id equilas queue id, on systems without queue, job_id euqils process id
+    On queuing systems, job_id equals queue id, on systems without queue, job_id equals process id
     """
     index = None
     job_id = None
