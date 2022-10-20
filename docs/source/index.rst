@@ -31,7 +31,7 @@ Highlights
 ----------
 
 - transparency: lean and lightweight Python code with transparent and robust handling of tasks and infrastructure
-- dependencies: no external workflow managers or database systems required, only NumPy and ASE `(Larsen, 2017) <https://doi.org/10.1088/1361-648X/aa680e>`
+- dependencies: no external workflow managers or database systems required, only NumPy and ASE `(Larsen, 2017) <https://doi.org/10.1088/1361-648X/aa680e>`_
 - customization: straight-forward extension to further tasks and interfaces (simulation codes, schedulers) with
   only low-level programming experience
 - pipelining: simple and transparent realization of task sequences and task dependencies
