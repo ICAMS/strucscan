@@ -12,7 +12,7 @@ ERROR = "error"                     # 1/0
 
 def determine_status__job_id(calc, jobpath, job_list):
     """
-    On queuing systems, job_id euqils queue id, on systems without queue, job_id euqils process id
+    On queuing systems, job_id equals queue id, on systems without queue, job_id equals process id
 
     Legend
     - 0 : does not exist
