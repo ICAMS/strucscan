@@ -78,7 +78,7 @@ These configurations can be edited all the time and are read in by strucsan at e
    - `SLEEP_TIME`: (int) Time in sec that strucscan will rest before starting the next monitoring loop. Default are 60 s.
 
 
-#### Resource 
+#### Resource directory
 
 The resource directory contains script templates and configurations for modules and calls that
 can be tailored for specific machines. Additionally, you can deposit parameters and settings 
