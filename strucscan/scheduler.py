@@ -63,7 +63,7 @@ class GeneralScheduler:
         Abstract method to submit machine file with 'machine_script_fname'
 
         :param machinefilename: (str) name of machine script
-        :return: id of job in scheduler: on queuing systems, job_id equilas queue id,
+        :return: id of job in scheduler: on queuing systems, job_id equals queue id,
         on systems without queue, job_id equals process id
         """
         raise NotImplementedError
@@ -81,7 +81,7 @@ class GeneralScheduler:
         """
         Abstract method
 
-        :param job_id: (str) id of job: on queuing systems, job_id equilas queue id,
+        :param job_id: (str) id of job: on queuing systems, job_id equals queue id,
         on systems without queue, job_id equals process id
         :return: (bool) if job id is queue / process list or not
         """
@@ -92,7 +92,7 @@ class GeneralScheduler:
         Abstract method
 
         :param jobpath: (str) absolute path to job directory
-        :return: (str) id of job: on queuing systems, job_id equilas queue id,
+        :return: (str) id of job: on queuing systems, job_id equals queue id,
         on systems without queue, job_id equals process id
         """
         raise NotImplementedError
@@ -178,7 +178,7 @@ class SunGridEngine(GeneralScheduler):
         SunGridEngine specific method
 
         :param jobpath: (str) absolute path to job directory
-        :return: (str) id of job: on queuing systems, job_id equilas queue id, on systems without queue, job_id equals process id
+        :return: (str) id of job: on queuing systems, job_id equals queue id, on systems without queue, job_id equals process id
         """
         queue_ids = self.get_queue_ids()
         job_id = None
@@ -235,7 +235,7 @@ class Slurm(GeneralScheduler):
         """
         Slurm specific method
 
-        :param job_id: (str) id of job: on queuing systems, job_id equilas queue id, on systems without queue, job_id equals process id
+        :param job_id: (str) id of job: on queuing systems, job_id equals queue id, on systems without queue, job_id equals process id
         :return: (bool) if job id is queue / process list or not
         """
         queue_ids = self.get_queue_ids()
@@ -250,7 +250,7 @@ class Slurm(GeneralScheduler):
         Slurm specific method
 
         :param jobpath: (str) absolute path to job directory
-        :return: (str) id of job: on queuing systems, job_id equilas queue id,
+        :return: (str) id of job: on queuing systems, job_id equals queue id,
         on systems without queue, job_id equals process id
         """
         queue_ids = self.get_queue_ids()
@@ -271,7 +271,7 @@ class Slurm(GeneralScheduler):
         Slurm specific method to submit machine file with 'machine_script_fname'
 
         :param machine_script_fname: (str) name of machine script
-        :return: id of job: on queuing systems, job_id equilas queue id, on systems without queue, job_id equals process id
+        :return: id of job: on queuing systems, job_id equals queue id, on systems without queue, job_id equals process id
         """
         cmd = subprocess.Popen("sbatch " + machine_script_fname, shell=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
         output, err = cmd.communicate()
@@ -330,7 +330,7 @@ class NoQueue(GeneralScheduler):
         Method to submit machine file with 'machine_script_fname'
 
         :param machine_script_fname: (str) name of machine script
-        :return: id of job: on queuing systems, job_id equilas queue id,
+        :return: id of job: on queuing systems, job_id equals queue id,
         on systems without queue, job_id equals process id
         """
         cmd = subprocess.Popen("chmod +x %s" % machine_script_fname,
@@ -344,7 +344,7 @@ class NoQueue(GeneralScheduler):
     def get_job_id_by_jobpath(self, jobpath):
         """
         :param jobpath: (str) absolute path to job directory
-        :return: (str) id of job: on queuing systems, job_id equilas queue id, on systems without queue, job_id equals process id
+        :return: (str) id of job: on queuing systems, job_id equals queue id, on systems without queue, job_id equals process id
         """
         raise NotImplementedError
 
