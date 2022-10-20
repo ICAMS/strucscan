@@ -78,11 +78,20 @@ These configurations can be edited all the time and are read in by strucsan at e
    - `SLEEP_TIME`: (int) Time in sec that strucscan will rest before starting the next monitoring loop. Default are 60 s.
 
 
+#### Structure directory
+
+This directory should contain a pool of structure files. 
+Exemplarily, a [template](https://github.com/ICAMS/strucscan/tree/main/examples/structures/unaries) 
+can be found in the examples on github.
+
+
 #### Resource directory
 
 The resource directory contains script templates and configurations for modules and calls that
 can be tailored for specific machines. Additionally, you can deposit parameters and settings 
-for the individual engine. The resource directory is organized like this:
+for the individual engine. A [template](https://github.com/ICAMS/strucscan/tree/main/examples/resources) 
+is given in the examples on github.
+The resource directory is organized like this:
 ```
 resources
  ├── machineconfig
