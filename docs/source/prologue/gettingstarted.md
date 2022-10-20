@@ -61,7 +61,7 @@ Python dependencies are installed automatically.
 #### Configuration file
 
 After installing strucscan successfully you need to set-up the `.strucscan` configuration file. 
-A template can be found in the [github](https://github.com/ICAMS/strucscan/blob/main/.strucscan) repository. 
+A [template](https://github.com/ICAMS/strucscan/blob/main/.strucscan) can be found in the github repository. 
 Copy the file to your home directory and configure it to your preferences. 
 These configurations can be edited all the time and are read in by strucsan at every start.
 
