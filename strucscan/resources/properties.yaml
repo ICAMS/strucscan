@@ -7,7 +7,5 @@
 # no conditional property needs to be entered after the colon (= None).
 
 eos: static, atomic, total
-dos: total
-
 
 default_option: atomic
