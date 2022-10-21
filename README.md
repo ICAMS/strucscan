@@ -16,7 +16,7 @@ A detailed documentation can be found [here](https://strucscan.readthedocs.io/).
 
 # Installation and setup
 
-1. clone repository into a `<directory>` of your choice. Please clone 'master' branch only.
+1. clone repository into a `<directory>` of your choice. Please clone 'main' branch only.
 2.  `cd` in your cloned `strucscan` directory and type 
 ```
 pip3 install .
