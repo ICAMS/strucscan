@@ -23,18 +23,18 @@ pip3 install .
 ```
 3. set-up `~/.strucscan` resource file: copy `.strucscan` in your home directory and set it up 
    according to your preferences. \
-   These configurations can be edited all the time and are read in by strucsan at every start. \
+   These configurations can be edited any time and are read in by strucsan at every start. \
    **Mandatory keys:**
    - `PROJECT_PATH`: (str) top node of your data tree.
    - `STRUCTURES_PATH`: (str) top node of your structure pool.
-   - `RESOURCE_PATH`: (str) path to configuration files for binaries, submission script, 
-     engines settings and potential files.
+   - `RESOURCE_PATH`: (str) path to configuration files for binaries, submission scripts, 
+     engines settings and further files (e.g. VASP pseudopotentials).
      
    **Optional keys:**
    - `DEBUG`: (bool) enables print commands for more insight. Default is `False`.
    - `STRUCT_FILE_FORMAT`: (str) structure file format of your structure files. 
      Valid values are all formats comptabile with `ase.io.read` method. Default is `cfg`.
-   - `SLEEP_TIME`: (int) Time in sec that strucscan will rest before starting the next monitoring loop. Default are 60 s.
+   - `SLEEP_TIME`: (int) Time in sec that strucscan will pause before starting the next monitoring loop. Default are 60 s.
 
 
 ## Dependencies
@@ -47,7 +47,7 @@ pip3 install .
 ## Resource directory
 The resource directory contains script templates and configurations for modules and calls that
 can be tailored for specific machines. Additionally, you can deposit parameters and settings 
-for the individual engine. The resource directory is organized like this:
+for the individual engines. The resource directory is organized like this:
 ```
 resources
  ├── machineconfig
