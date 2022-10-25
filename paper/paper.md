@@ -74,14 +74,14 @@ Strucscan is a lightweight driver with focus on atomistic simulations and offers
 # Strucscan
 
 The strucscan framework is based on Python 3.6+ and requires the Atomic Simulation Environment [@ase] and NumPy. 
-It is available from a git repository and can be installed from this or with pip.
+It is available from a git repository and can be installed from there or with pip.
 Detailed documentation and usage examples of strucscan are available on readthedocs. 
 High-throughput calculations with strucscan can be started from the command line, from a Python shell or from 
 a Juypter notebook as shown in the examples in the strucscan git repository.
 The present version is focused on high-throughput DFT calculations on computer clusters with SunGridEngine [@sge] 
 and slurm [@slurm] scheduler systems. Future extension to further simulation codes are planned.
 
-The basic workflow of strucscan is visualized in Fig. \autoref{fig:workflow} and includes the following step:
+The basic workflow of strucscan is visualized in \autoref{fig:workflow} and includes the following steps:
 
 ![Workflow of the strucscan framework: the process starts with creating 
 a list of jobs by looping over structures and pipelining 
@@ -107,12 +107,12 @@ Based on the input from the user, strucscan generates of list of all necessary c
 over the list of given structures and the list of tasks.
 In the context of materials properties, a common task is the full relaxation of a crystal structure from
 an initial guess of the atomic positions and simulation cell to a configuration that takes a minimum 
-total energy in a DFT calculation. This task is often followed by second task where the total energy is
+total energy in a DFT calculation. This task is often followed by a second task where the total energy is
 computed with DFT for a series of volumes of the simulation cell around the equilibrium volume and a 
 subsequent fit of this energy-volume data to obtain the minimum with high accuracy.
 For such interdependent tasks, strucscan uses a pipelining concept that converts the final structure of
 one task to the initial structure of a subsequent task. I.e. each structure is pipelined through the list 
-of properties. The pipelines are also treated as tasks and can be easily be modified by the user.
+of properties. The pipelines are also treated as tasks and can easily be modified by the user.
 In this way the user can operate with higher-level pipeline names and strucscan will automatically insert 
 all required tasks along a pipeline.
 Continuing with the above example, strucscan provides a pipeline 'EOS' that collects the values of
