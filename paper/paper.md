@@ -144,7 +144,6 @@ energy-volume data to an equation of state and the compilation of the resulting 
 binding energy and bulk modulus in one JSON file for all given structures of a given chemical element
 or compound.
 
-\pagebreak
 
 # Acknowledgements
 
