@@ -92,6 +92,8 @@ if necessary, and errors will be handled automatically.
 If the job is finished successfully, data is collected and a simple
 post-processing is conducted \label{fig:workflow}](workflow.pdf)
 
+\pagebreak
+
 1. *Input from user* 
 
 The user specifies the materials simulation software and the usage of the scheduler system or localhost.
@@ -141,6 +143,8 @@ In the context of materials properties the post-processing by strucscan includes
 energy-volume data to an equation of state and the compilation of the resulting equilibrium volume,
 binding energy and bulk modulus in one JSON file for all given structures of a given chemical element
 or compound.
+
+\pagebreak
 
 # Acknowledgements
 
