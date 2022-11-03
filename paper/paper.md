@@ -90,7 +90,7 @@ into the list of jobs. Depending on the status of the job,
 the job is monitored if running (or queued), files will be created 
 if necessary, and errors will be handled automatically.
 If the job is finished successfully, data is collected and a simple
-post-processing is conducted \label{fig:workflow}](workflow.pdf)
+post-processing is conducted. \label{fig:workflow}](workflow.pdf)
 
 \pagebreak
 
