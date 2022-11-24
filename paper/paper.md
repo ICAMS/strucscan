@@ -105,7 +105,7 @@ Python dictionary for starting strucscan from a python shell or a Jupyter Notebo
 
 2. *Initialization of workflow*
 
-Based on the input from the user, strucscan generates of list of all necessary calculations by looping 
+Based on the input from the user, strucscan generates a list of all necessary calculations by looping 
 over the list of given structures and the list of tasks.
 In the context of materials properties, a common task is the full relaxation of a crystal structure from
 an initial guess of the atomic positions and simulation cell to a configuration that takes a minimum 
@@ -127,7 +127,7 @@ calculation.
 
 3. *Execution of tasks*
 
-After the initialization, strucscan identifies the status of each *job* by checking if the expected
+After the initialization, strucscan identifies the status of each job by checking if the expected
 folders exist in the data tree, if it is waiting or running in the scheduler, if it is finished or
 if an error occurred. Depending on the status, strucscan will create the necessary input files, start
 the calculation or handle an error. This stage is repeated until the list of jobs is complete.
@@ -147,7 +147,7 @@ or compound.
 
 # Acknowledgements
 
-The  authors  acknowledge  funding  by  the  Deutsche Forschungsgemeinschaft (DFG) through project  C1 
+The  authors  acknowledge  funding  by  the  Deutsche Forschungsgemeinschaft (DFG) through project C1 
 of the collaborative research center SFB/TR 103 (DFG project number 190389738).
 
 # References
