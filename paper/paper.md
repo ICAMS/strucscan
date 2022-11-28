@@ -36,7 +36,7 @@ in an efficient way on compute clusters with a queueing system or on the local h
 workflow of strucscan loops over a specified list of crystal structures and chemical compositions and computes a 
 specified list of properties for each combination. The property calculations are represented as a pipeline of 
 successive, interdependent steps which can easily be adapted and extended. The data is stored in a human-readable 
-data tree with flat hierarchy. Strucscan performs a series of scalable and easily extendable pre-processing and 
+data-tree with flat hierarchy. strucscan performs a series of scalable and easily extendable pre-processing and 
 post-processing steps and compiles the results in Python dictionaries for further evaluation. Data provenance for 
 research-data management and analytics is realized in terms of the data-tree structure that includes all input 
 files.
@@ -45,33 +45,33 @@ The present version of strucscan is tailored to the calculation of frequently ne
 widely used atomistic simulation codes on common scheduling systems. The implemented interfaces particularly
 support the VASP software package [@Kresse-96], [@Kresse-96b], [@Kresse-99] for density-functional theory (DFT)
 calculations on SunGridEngine [@sge] and slurm [@slurm] scheduler systems. With the well-defined and documented 
-interfaces, strucscan can be extended with basic programming skills to further scheduling systems, to further
-simulation codes and material properties at the atomic scale or to other simulation scales.
+interfaces, strucscan can be extended, with basic programming skills, with additional scheduling systems, 
+simulation codes and material properties at the atomic scale as well as other simulation scales.
 
 # Statement of need
 
-The need for high-throughput calculations in computational materials science lead to the development of several
+The need for high-throughput calculations in computational materials science have lead to the development of several
 workflow managers and high-throughput frameworks ([@pymatgen], [@strucscan], [@atomate], [@pyiron], [@aiida], [@asr]). 
 These software packages offer numerous features but often require a rather complex infrastructure with, e.g.,
 external workflow managers [@FireWorks] for interaction with compute clusters or SQL databases for storing results. 
 Moreover, it is often not straightforward to extend these large software packages and to tailor them for 
 particular needs. In many practical cases, the repetitive execution of the tasks does not benefit 
-from a large toolbox of features or from a predefined database concept but rather needs a concise and transparent 
+from a large toolbox of features, or from a predefined database concept, but rather needs a concise and transparent 
 driver that can be customized to the particular high-throughput task and the specific data management solution.
-Strucscan is a lightweight driver with focus on atomistic simulations and offers the following features:
+strucscan is a lightweight driver with focus on atomistic simulations and offers the following features:
 
 - Transparency: lean and lightweight Python code with transparent and robust handling of tasks and infrastructure
 - Dependencies: no external workflow managers or database systems required, only NumPy and ASE [@ase]
 - Customization: straight-forward extension to further tasks and interfaces (simulation codes, schedulers) with 
   only low-level programming experience
 - Pipelining: simple and transparent realization of task sequences and task dependencies
-- Restarts: seamless restart capabilities due to coherent interlinking of workflow organisation and data tree
+- Restarts: seamless restart capabilities due to coherent interlinking of workflow organisation and data-tree
 - Post-processing: customizable post-processing within workflow with results stored in Python dictionaries for 
   further post-processing
-- Data provenance: human-readable data tree with flat hierarchy and storage of all input files for metadata 
+- Data provenance: human-readable data-tree with flat hierarchy and storage of all input files for metadata 
   generation
 
-# Strucscan
+# strucscan
 
 The strucscan framework is based on Python 3.6+ and requires the Atomic Simulation Environment [@ase] and NumPy. 
 It is available from a git repository and can be installed from there or with pip.
@@ -121,14 +121,14 @@ Continuing with the above example, strucscan provides a pipeline 'EOS' that coll
 the equilibrium volume after fitting the energy-volume data after computing the energy-volume data after 
 performing a full relaxation.
 The result of the workflow initialization is a list of all necessary calculations, '*jobs*', that is 
-directly reflected in the structure of the data tree. A restart of strucscan with the same user input 
-will find the existing data tree and continue seamlessly after the last finished 
+directly reflected in the structure of the data-tree. A restart of strucscan with the same user input 
+will find the existing data-tree and continue seamlessly after the last finished 
 calculation.
 
 3. *Execution of tasks*
 
 After the initialization, strucscan identifies the status of each job by checking if the expected
-folders exist in the data tree, if it is waiting or running in the scheduler, if it is finished or
+folders exist in the data-tree, if it is waiting or running in the scheduler, if it is finished or
 if an error occurred. Depending on the status, strucscan will create the necessary input files, start
 the calculation or handle an error. This stage is repeated until the list of jobs is complete.
 In order to avoid uncontrolled restarts, a job is declared as finished if error handling has been 
@@ -137,7 +137,7 @@ attempted unsuccessfully for three times.
 4. *Post-processing of results*
 
 At the end of each workflow cycle, strucscan starts post-processing of the calculation results.  
-It will collect the central results from the data tree and compile them in Python dictionaries in JSON 
+It will collect the central results from the data-tree and compile them in Python dictionaries in JSON 
 format for further post-processing or for database upload. 
 In the context of materials properties the post-processing by strucscan includes, e.g., the fitting of 
 energy-volume data to an equation of state and the compilation of the resulting equilibrium volume,
